@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>New Project 2</title>
+        <style>
+            *{
+                padding: 0 ;
+                margin: 0 ;
+                box-sizing: border-box ;
+                font-family: Arial, sans-serif ;
+            }
+            img{
+                width: 600px ;
+                height: 400px ;
+                object-fit: cover ;
+            }
+            /* styling the big container, the width, height and background */
+            main{
+                width: 100vw ;
+                height: 100vh ;
+                background-image: url(3e.jpg) ;
+                background-position: center ;
+                background-size: cover ;
+            }
+            /* styling the section */
+            #home{
+                width: 80vw ;
+                height: 80vh ;
+                position: absolute ;
+                top: 50% ;
+                left: 50% ;
+                transform: translate(-50%, -50%);
+                border: 2px solid gray ;
+                background-color: rgb(0, 0, 0, .5);
+                border-radius: 30px ;
+            }
+            /* styling the nav and logo container */
+            #container{
+                display: flex ;
+                align-items: center ;
+                justify-content: space-between ;
+                margin: 30px 20px;
+            }
+            #logo{
+                color: #fff ;
+                font-size: 45px ;
+                letter-spacing: 2px ;
+                margin-left: 3.5% ;
+            }
+            .nav-link{
+                text-decoration: none ;
+                font-size: 18px ;
+                color: grey ;
+                padding: 10px 15px ;
+                margin: 0 10px ;
+                border-radius: 20px ;
+                transition: .7s ;
+            }
+            .nav-link:hover{
+                background-color: #fff ;
+            }
+            /* styling the content section */
+            .box{
+                display: flex ;
+                align-items:flex-start ;
+                justify-content:space-between ;
+                margin: 50px 50px 0 ;
+            }
+            .card{
+                width: 35vw ;
+                text-align: justify ;
+                padding: 5px 10px ;
+                color: rgba(255, 255, 255, 0.7);
+            }
+            .card h1{
+                font-size: 60px ;
+                letter-spacing: 2px ;
+                font-weight: 800 ;
+            }
+            .card p{
+                font-size: 22px ;
+                letter-spacing: 1px ;
+            }
+            /* styling the overlaying pictures */
+            .photo #pics1{
+                position: absolute ;
+                left: 48% ;
+                margin-top: 30px ;
+                cursor: pointer;
+            }
+            .photo #pics2{
+                position: absolute ;
+                top: 29% ;
+                left: 49.5% ;
+                cursor: pointer;
+            }
+            .photo #pics3{
+                position: absolute ;
+                top: 32% ;
+                left: 51.5% ;
+                cursor: pointer;
+            }
+            .photo #pics4{
+                position: absolute ;
+                top: 35% ;
+                left: 52.5% ;
+                cursor: pointer;
+            }
+            .pictures{
+                animation-name: fade ;
+                animation-duration: 2s ;
+            }
+            @keyframes fade{
+                from{opacity: .1;}
+                to{opacity: 1;}
+            }
+        </style>
+    </head>
+
+    <body>
+        <!--The big container that contains all-->
+        <main>
+            <!--the sections which will all be laid on the big container-->
+            <section id="home">
+                <!--the logo and navigation-->
+                <div id="container">
+                    <h1 id="logo">APPLE</h1>
+                    <div>
+                        <nav>
+                            <a href="#home" class="nav-link">Home</a>
+                            <a href="#about" class="nav-link">About</a>
+                            <a href="#service" class="nav-link">Service</a>
+                            <a href="#contact" class="nav-link">Contact us</a>
+                        </nav>
+                    </div>
+                </div>
+
+                <!--the content div-->
+                <div class="box">
+                    <div class="card">
+                        <h1>Be Young, Have Fun, <br> <span>Drink Fanta</span></h1>
+                        <p>Fanta is an American-owned German brand of fruit-flavored
+                            carbonated soft drinks created by Coca-Cola Deutschland
+                            under the leadership of German businessman Max Keith
+                        </p>
+                    </div>
+                    <!--the overlaying pictures-->
+                    <div class="photo">
+                        <img src="3e.jpg" id="pics1" class="pictures">
+                        <img src="dubai-palm-island-1.jpg" id="pics2" class="pictures">
+                        <img src="Above the skies by Oission on DeviantArt.jpeg" id="pics3" class="pictures">
+                        <img src="the-lounge-burj-khalifa-03.jpg" id="pics4" class="pictures">
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <script>
+            let pictures = document.getElementsByClassName("pictures");
+
+            let slideIndex = 0;
+            
+           showLayers()
+
+           function showLayers() {
+            let i;
+            for (i = 0; i < pictures.length; i++){
+                pictures[i].style.zIndex = "0"
+            }
+            slideIndex++
+            if (slideIndex > pictures.length){
+                slideIndex = 1;
+            }
+            pictures[slideIndex-1].style.zIndex = "1";
+            setTimeout(showLayers, 3000);
+           }
+        </script>
+    </body>
+</html>
